@@ -1,0 +1,23 @@
+sbi = set bit
+cbi = clear bit
+
+
+#ifndef cbi
+#define cbi(sfr, bit)     (_SFR_BYTE(sfr) &= ~_BV(bit))
+#endif
+#ifndef sbi
+#define sbi(sfr, bit)     (_SFR_BYTE(sfr) |= _BV(bit))
+#endif
+
+
+sfr(special function register)
+sbi(sfr, bit) = (레지스터, 레지스터이름 or 번호)
+
+ex)
+sbi(DDRB, 2);
+== DDRB 2번 레지스터 핀 1로 = 10번 핀 출력 설정
+
+sbi(SPCR, MSTR); 
+== SPCR : SPI Control Register 중 MSTR bit를 1로 설정.
+
+cbi는 반대로 0으로 설정. 
